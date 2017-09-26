@@ -30,6 +30,8 @@ struct termios setBashMode(int fd) {
 PTY::PTY(const std::string & pref, int mode) {
 	singleton = this;
 	signal(SIGPIPE,handle_signal);
+	signal(SIGTERM,handle_signal);
+	signal(SIGINT,handle_signal);
 
 	this->mode = mode;
 	this->prefix = pref;
